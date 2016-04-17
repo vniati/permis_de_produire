@@ -7,12 +7,14 @@ def homepage(request):
     if request.method == 'GET':
         return render(request, "homepage.html")
     elif request.method == "POST":
-        def login(request):
-            username = request.POST["identhome"]
-            password = request.POST["identmdp"]
-            user = User.objects.create(username=username,
-                                   password=password)
-            login(request, user)
+        username = request.POST["identhome"]
+        password = request.POST["identmdp"]
+        user = User.objects.create(username=username,
+                                       password=password)
+        if user is not None:
+            if user.is_active:
+                user.backend = 'django.contrib.auth.backends.ModelBackend'
+                login(request, user)
         return redirect("/server")
 
 def server(request):

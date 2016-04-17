@@ -2,7 +2,7 @@
 
 {% block content %}
 Test Server Page
-<!-- {% if user.is_authenticated %} -->
+{% if request.user.is_authenticated %}
 {{ request.user }}
-<!-- {%endif%} -->
+{%endif%}
 {% endblock %}
