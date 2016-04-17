@@ -19,6 +19,4 @@ def homepage(request):
 
 def server(request):
     user = request.user
-    if user.is_authenticated():
-        print "oktamer"
     return render(request, "server.html", {"user":user})
