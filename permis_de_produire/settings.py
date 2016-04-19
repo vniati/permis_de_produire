@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'permis_de_produire.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': 'permis_de_produire',
+        'ENGINE': 'django.db.backends.mysql',
+        'USER': 'merkur',
+        'PASSWORD': 'plop48000',
+        'HOST': 'vps270582.ovh.net',
+        'PORT': '3306'
     }
 }
 
