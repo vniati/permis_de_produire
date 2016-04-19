@@ -1,2 +1,4 @@
 bower_components
 PdP/static/css/*.css
+PdP/*.pyc
+permis_de_produire/*.pyc
