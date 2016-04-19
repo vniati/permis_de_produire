@@ -1,4 +1,5 @@
 bower_components
 PdP/static/css/*.css
 PdP/*.pyc
+PdP/migrations/*.pyc
 permis_de_produire/*.pyc
