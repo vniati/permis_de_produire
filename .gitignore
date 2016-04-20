@@ -1,5 +1,6 @@
 bower_components
+permis_de_produire/site_settings.py
+permis_de_produire/*.pyc
 PdP/static/css/*.css
 PdP/*.pyc
 PdP/migrations/*.pyc
-permis_de_produire/*.pyc
