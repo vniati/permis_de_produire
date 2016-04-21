@@ -10,6 +10,9 @@
             <div class="divForm">
                 <form role="form" action="/" method="post">
                   {% csrf_token %}
+                  <div class="form-group">
+                      <h1>Inscription</h1>
+                  </div>
                     <div class="form-group">
                         <img src="/static/img/logo.png" alt="" class="img-responsive logo"/>
                     </div>
@@ -18,8 +21,12 @@
                       {{form.identifiant}}
                     </div>
                     <div class="form-group">
-                      {{form.mot_de_passe.label}}
-                      {{form.mot_de_passe}}
+                      {{form.password.label}}
+                      {{form.password}}
+                    </div>
+                    <div class="form-group">
+                      {{form.password2.label}}
+                      {{form.password2}}
                     </div>
                     <button type="submit" class="btn btn-primary">Valider</button>
                 </form>
