@@ -14,6 +14,9 @@ def homepage(request):
             mot_de_passe = register_form.cleaned_data["mot_de_passe"]
             user = User.objects.create(username=identifiant,
                                        password=mot_de_passe)
+            user = authenticate(username=identifiant, password=mot_de_passe)
+            # user.backend = 'django.contrib.auth.backends.ModelBackend'
+            # login(request, user)
             return redirect('/server')
     else:
         register_form = RegisterForm()
