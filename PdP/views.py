@@ -37,3 +37,9 @@ def register(request):
 def server(request):
     # user = request.user
     return render(request, "server.html")
+
+def user(request):
+    return render(request, "user.html")
+
+def animateur(request):
+    return render(request, "animateur.html")
