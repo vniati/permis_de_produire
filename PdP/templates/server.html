@@ -1,6 +1,64 @@
 {% extends "base.html" %}
 
 {% block content %}
-Test Server Page
-{{ request.user }}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-radius table-striped table-responsive">
+                <caption class="text-center"><h1>Liste des serveurs</h1></caption>
+                <thead>
+                    <tr>
+                        <th>Serveurs</th>
+                        <th class="text-center">Equipe bleu</th>
+                        <th class="text-center">Equipe rouge</th>
+                        <th class="text-center">Equipe verte</th>
+                        <th class="text-center">Equipe jaune</th>
+                        <th class="text-center">Total Joueurs</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="first">Server test</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0 / 12</td>
+                    </tr>
+                    <tr>
+                        <td class="first">Server test 2</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0 / 12</td>
+                    </tr>
+                    <tr>
+                        <td class="first">Server test 3</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0 / 12</td>
+                    </tr>
+                    <tr>
+                        <td class="first">Server test 4</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0 / 12</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <td class="text-center" colspan="6">
+                        <button type="button" class="btn btn-sm btn-default">Rafraichir</button>&nbsp&nbsp&nbsp
+                        <button type="button" class="btn btn-sm btn-default">Rejoindre</button>
+                    </td>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

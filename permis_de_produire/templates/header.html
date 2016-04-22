@@ -16,9 +16,13 @@
                     <li><a href="/add_post">Ajouter un post</a></li>
                 </ul> -->
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/login">Connexion</a></li>
-                    <li><a href="/">Inscription</a></li>
-                    <!-- <li><a href="/profile/signout">Logout</a></li> -->
+                    {% if user.is_authenticated %}
+                        <li><a href="">{{ request.user }}</a></li>
+                        <li><a href="/accounts/logout/">Déconnexion</a></li>
+                    {% else %}
+                        <li><a href="/accounts/login/">Connexion</a></li>
+                        <li><a href="/">Inscription</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
