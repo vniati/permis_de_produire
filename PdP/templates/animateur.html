@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main id="user_background">
+    <section>
+        <div class="">
+            <a href="#" id="user_lien_aide">Aide</a>
+        </div>
+        <div class="text-center">
+            <img src="/static/img/plateau.png" class="user_img_plateau" alt="" />
+        </div>
+        <div class="container">
+            <div class="row" style="margin:2em 0">
+                <div id="user_chat"class="col-md-6">
+                    <div class="user_chat_affichage">
+                        AFFICHAGE CHAT
+                    </div>
+                    <ul id="user_messages"></ul>
+                    <form id="user_form" action="">
+                        <input id="m" autocomplete="off" />
+                        <button type="button" name="button">Envoyer</button>
+                    </form>
+                </div>
+                <div class="col-md-3">
+                    <div class="user_cartes">
+                        AFFICHAGE CARTE
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <form class="" action="index.html" method="post">
+                        <div class="animateur_reponses">
+                            <div class="animateur_affichage_reponse">
+                                AFFICHAGE REPONSE
+                            </div>
+                            <button class="animateur_btn_yes" type="button" name="button">Correct</button>
+                            <button  class="animateur_btn_no" type="button" name="button">Incorrect</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

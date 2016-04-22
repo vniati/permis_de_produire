@@ -1,0 +1,132 @@
+@import "variable_user";
+*{
+    padding: 0;
+    margin: 0;
+}
+#user_background{
+    margin-top: -4em;
+
+}
+#user_lien_aide{
+    float: right;
+    text-decoration: none;
+    border: 1px solid white;
+    border-radius: $radius;
+    padding: 0.5em 1em;
+    color:white;
+    background-color:#8ccc3b ;
+    position: relative;
+    top: 3em;
+    right: 1em;
+
+}
+.user_img_plateau{
+    width: 100%;
+    height: 45em;
+
+}
+#user_form {
+    padding: 3px;
+
+    bottom: 0;
+    input{
+         border: $border;
+         border-radius: $radius;
+         padding: 10px;
+         width: 78%;
+    }
+    button{
+        width: 21%;
+        background-color:#8ccc3b ;
+        border-radius: $radius;
+        border: none;
+        padding: 10px;
+        color: white;
+    }
+}
+#user_messages {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    li{
+         padding: 5px 10px;
+         :nth-child(odd){
+            background: #eee;
+         }
+    }
+}
+
+#user_chat{
+    border: $border;
+    padding: 1em;
+    border-radius: $radius;
+}
+.user_chat_affichage{
+    border:$border;
+    padding: 2em;
+    margin-bottom: 2em;
+    border-radius: $radius;
+
+}
+.user_cartes{
+    border: $border;
+    height: 6em;
+    border-radius: $radius;
+}
+.user_reponses{
+    border: $border;
+    padding: 1em;
+    border-radius: $radius;
+
+    button{
+        background-color:#8ccc3b ;
+        border-radius: $radius;
+        border: none;
+        padding: 10px;
+        color: white;
+    }
+    input{
+        width: 164px;
+    }
+}
+.col-md-3{
+    padding-right: 0;
+}
+.user_affichage_reponse{
+    border: $border;
+    padding: 2em;
+    border-radius: $radius;
+
+}
+
+
+// animateur css
+
+.animateur_reponses{
+    border: $border;
+    padding: 1em;
+    border-radius: $radius;
+    
+    .animateur_affichage_reponse{
+        border: $border;
+        padding: 2em;
+        border-radius: $radius;
+        margin-bottom: 1em;
+    }
+    .animateur_btn_yes{
+        background-color:#8ccc3b ;
+        border-radius: $radius;
+        border-radius: $radius;
+        border: none;
+        padding: 10px;
+        color: white;
+
+    }
+    .animateur_btn_no{
+        background-color:#d13c21 ;
+        border-radius: $radius;
+        border: none;
+        padding: 10px;
+        color: white;
+    }
+}
