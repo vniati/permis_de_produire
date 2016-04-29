@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 # Djang-registration
 from registration.views import RegistrationView as BaseRegistrationView
 from django.contrib.auth import authenticate, get_user_model, login
@@ -40,11 +41,9 @@ def server(request):
     return render(request, "server.html", {'form': form})
 
 
+@login_required(login_url='/accounts/login/')
 def user(request):
-    if not request.user.is_authenticated():
-        return redirect("accounts/login")
-    else:
-        return render(request, "user.html")
+    return render(request, "user.html")
 
 
 def animateur(request):

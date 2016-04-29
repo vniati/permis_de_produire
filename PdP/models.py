@@ -4,13 +4,6 @@ from django.contrib.auth.models import User
 from django import forms
 from django.forms import ModelForm
 
-COLORS_CHOICES = (
-    ('blue', 'Blue'),
-    ('green', 'Green'),
-    ('red', 'Red'),
-    ('yellow', 'Yellow'),
-)
-
 
 class ColorChoice(models.Model):
     """docstring for ColorChoice"""
