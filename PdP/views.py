@@ -41,7 +41,10 @@ def server(request):
 
 
 def user(request):
-    return render(request, "user.html")
+    if not request.user.is_authenticated():
+        return redirect("accounts/login")
+    else:
+        return render(request, "user.html")
 
 
 def animateur(request):
