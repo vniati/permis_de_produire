@@ -1,10 +1,7 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-
-app.get('/', function(req, res){
-  res.sendfile('/home/virgil/Code/Permis_de_Produire/permis_de_produire/PdP/templates/user.html');
-});
+var link = require('./function_link.js');
 
 io.on('connection', function(socket){
   console.log('a user connected');
