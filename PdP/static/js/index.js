@@ -5,9 +5,9 @@ var io = require('socket.io')(http);
 var io2 = require('socket.io')(http);
 var http2 = require('http').Server(app);
 
-app.get('/', function(req, res){
-  res.sendfile('/home/virgil/Code/Permis_de_Produire/permis_de_produire/PdP/templates/user.html');
-});
+var link = require("./function_link.js");
+
+link;
 
 io.on('connection', function(socket){
   console.log('a user connected');
