@@ -5,7 +5,8 @@ from forms import MyRegistrationForm
 from views import server, user, animateur, RegistrationView
 
 urlpatterns = [
-    url(r'^$', RegistrationView.as_view(form_class = MyRegistrationForm), name='registration_register'),
+    url(r'^$', RegistrationView.as_view(form_class=MyRegistrationForm),
+        name='registration_register'),
     url(r'^accounts/', include('registration.auth_urls')),
     url(r'^server$', server),
     url(r'^user$', user),
