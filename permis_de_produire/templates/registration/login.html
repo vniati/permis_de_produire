@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3 image">
+            <img src="/static/img/personnage1.png" alt="" class="img-responsive"/>
+        </div>
+        <div class="col-sm-6">
+            <div class="divForm">
+                <form role="form" action="/accounts/login/" method="post">
+                  {% csrf_token %}
+                    <div class="form-group">
+                       <h1>Connexion</h1>
+                    </div>
+                    <div class="form-group">
+                        <img src="/static/img/logo.png" alt="" class="img-responsive logo"/>
+                    </div>
+                    <div class="form-group">
+                      <p>{{form.username.label}}</p>
+                      {{form.username}}
+                    </div>
+                    <div class="form-group">
+                      <p>{{form.password.label}}</p>
+                      {{form.password}}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Valider</button>
+                    <input type="hidden" name="next" value="/user" />
+                    <p></p>
+                    <p><a href="{% url 'auth_password_reset' %}">{% trans "Mot de passe oublié" %}</a></p>
+                    <p><a href="{% url 'registration_register' %}">{% trans "Inscrivez-vous" %}</a>.</p>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-3 image">
+            <img src="/static/img/personnage3.png" alt="" class="img-responsive"/>
+        </div>
+    </div>
+    <div class="row footer">
+        <div class="col-sm-12">
+            <img src="/static/img/logo-preff.png" alt="" class="img-responsive"/>
+            <img src="/static/img/MJN.png" alt="" class="img-responsive"/>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% comment %}
+**registration/login.html**
+
+It's your responsibility to provide the login form in a template called
+registration/login.html by default. This template gets passed four
+template context variables:
+
+``form``
+    A Form object representing the login form. See the forms
+    documentation for more on Form objects.
+
+``next``
+    The URL to redirect to after successful login. This may contain a
+    query string, too.
+
+``site``
+    The current Site, according to the SITE_ID setting. If you don't
+    have the site framework installed, this will be set to an instance
+    of RequestSite, which derives the site name and domain from the
+    current HttpRequest.
+
+``site_name``
+    An alias for site.name. If you don't have the site framework
+    installed, this will be set to the value of
+    request.META['SERVER_NAME']. For more on sites, see The
+    "sites" framework.
+{% endcomment %}
