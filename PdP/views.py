@@ -43,6 +43,7 @@ def server(request):
 
 @login_required(login_url='/accounts/login/')
 def user(request):
+    nombre = 4
     carte_standard = DysStandard.objects.order_by('?').first()
     carte_critique = DysCritique.objects.order_by('?').first()
     carte_rattrapage = Rattrapage.objects.order_by('?').first()

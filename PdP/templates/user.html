@@ -39,12 +39,21 @@
 
                 </div>
                 <div class="col-md-3">
-                  <div class="">
-                        <h3>
+                        {% if nombre == 4 or nombre == 8 or nombre == 12 or nombre == 16 %}
+                        <div class="user_cartes_critique">
+                          <h3>
                             DYSFONCTIONNEMENT
-                        </h3>
-
-                    </div>
+                          </h3>
+                       {{carte_critique.description}}
+                      </div>
+                       {%else%}
+                       <div class="user_cartes_standard">
+                         <h3>
+                           DYSFONCTIONNEMENT
+                         </h3>
+                       {{carte_standard.description}}
+                       </div>
+                      {%endif%}
                   </div>
                 <div class="col-md-3">
                         <div class="user_reponses">
