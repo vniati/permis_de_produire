@@ -43,7 +43,10 @@ def server(request):
 
 @login_required(login_url='/accounts/login/')
 def user(request):
-    return render(request, "user.html")
+    carte_standard = DysStandard.objects.order_by('?').first()
+    carte_critique = DysCritique.objects.order_by('?').first()
+    carte_rattrapage = Rattrapage.objects.order_by('?').first()
+    return render(request, "user.html", {"carte_standard":carte_standard, "carte_critique":carte_critique, "carte_rattrapage":carte_rattrapage, "nombre":nombre} )
 
 
 def animateur(request):

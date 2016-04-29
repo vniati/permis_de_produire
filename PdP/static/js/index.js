@@ -29,6 +29,15 @@ io2.on('connection', function(socket){
   });
 });
 
+io2.on('connection', function(socket){
+  socket.on('secroom', function(msg){
+    io2.emit('secroom', msg);
+  });
+});
+
+
+// Second Chat
+
 io2.on('connection', function(socket2){
   console.log('a user connected');
   socket2.on('disconnect', function(){
