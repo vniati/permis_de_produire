@@ -4,7 +4,26 @@
 <main id="user_background">
     <section>
         <div class="">
-            <a href="#" id="user_lien_aide">Aide</a>
+
+            <!-- Modale -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Aide</h4>
+                        </div>
+                        <div class="modal-body">
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-inverse" data-dismiss="modal"><i class="icon icon-times icon-lg"></i>Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" id="user_lien_aide" data-toggle="modal" class="btn btn-lg" data-target="#myModal"><i class="icon icon-sign-out icon-lg"></i> Aide</button>
+
         </div>
         <div class="text-center">
             <img src="/static/img/plateau.png" class="user_img_plateau" alt="" />
@@ -12,10 +31,12 @@
         <div class="container">
             <div class="row" style="margin:2em 0">
                 <div id="user_chat"class="col-md-6">
-                  <ul id="messages"></ul>
-                  <form action="">
-                    <input id="m" autocomplete="off" /><button>Send</button>
-                  </form>
+
+                    <ul id="messages"></ul>
+                    <form action="">
+                        <input id="m" autocomplete="off" /><button>Send</button>
+                    </form>
+
                 </div>
                 <div class="col-md-3">
                     <div class="user_cartes">
@@ -40,14 +61,14 @@
 <script src="http://localhost:8100/socket.io/socket.io.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
 <script>
-  var socket = io.connect('http://localhost:8100/');
-  $('form').submit(function(){
+var socket = io.connect('http://localhost:8100/');
+$('form').submit(function(){
     socket.emit('chat message', $('#m').val());
     $('#m').val('');
     return false;
-  });
-  socket.on('chat message', function(msg){
+});
+socket.on('chat message', function(msg){
     $('#messages').append($('<li>').text(msg));
-  });
+});
 </script>
 {% endblock %}

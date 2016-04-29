@@ -8,4 +8,3 @@ admin.site.register(BlueEq)
 admin.site.register(DysStandard)
 admin.site.register(DysCritique)
 admin.site.register(Rattrapage)
-# Register your models here.

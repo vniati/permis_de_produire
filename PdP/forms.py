@@ -6,11 +6,8 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+
 class MyRegistrationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
-        fields = [
-        User.USERNAME_FIELD,
-        'password1',
-        'password2'
-        ]
+        fields = [User.USERNAME_FIELD, 'password1', 'password2']
         required_css_class = 'required'
