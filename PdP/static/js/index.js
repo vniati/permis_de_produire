@@ -17,6 +17,8 @@ http.listen(8100, function(){
   console.log('listening on :8100');
 });
 
+
+
 io.emit('some event', { for: 'everyone' });
 
 io.on('connection', function(socket){
