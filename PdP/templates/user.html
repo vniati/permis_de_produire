@@ -30,15 +30,26 @@
         </div>
         <div class="container">
             <div class="row" style="margin:2em 0">
+<!-- <<<<<<< HEAD
                 <div id="user_chat"class="col-md-6">
 
                     <div id="messages"></div>
                     <form id="form1" action="">
                         <input id="m" autocomplete="off" /><button>Send</button>
+======= -->
+                <div class="col-md-5">
+                    <h2>Chat</h2>
+                    <ul id="messages"></ul>
+                    <form class="user_chat" id="form1" action="">
+                        <input id="m" autocomplete="off" />
+                        <br></br>
+                        <button>Envoyer</button>
+
                     </form>
 
                 </div>
                 <div class="col-md-3">
+                    <h2>Question</h2>
                         {% if nombre == 4 or nombre == 8 or nombre == 12 or nombre == 16 %}
                         <div class="user_cartes_critique">
                           <h3>
@@ -55,12 +66,14 @@
                        </div>
                       {%endif%}
                   </div>
-
-                <div class="col-md-3">
-                        <div class="user_reponses">
-                          <div id="messages2"></div>
-                          <form id="form2" action="">
-                              <input id="m2" autocomplete="off" /><button>Send</button>
+                <div class="col-md-4">
+                    <h2>Réponses</h2>
+                        <div>
+                          <ul id="messages2"></ul>
+                          <form id="form2" class="user_reponses"action="">
+                              <input id="m2" autocomplete="off" />
+                              <br></br>
+                              <button>Envoyer</button>
                           </form>
                         </div>
                 </div>

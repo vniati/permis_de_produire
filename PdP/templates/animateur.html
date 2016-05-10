@@ -3,34 +3,63 @@
 {% block content %}
 <main id="user_background">
     <section>
-        <div class="">
-            <a href="#" id="user_lien_aide">Aide</a>
+        <!-- Modale -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Aide</h4>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-inverse" data-dismiss="modal"><i class="icon icon-times icon-lg"></i>Fermer</button>
+                    </div>
+                </div>
+            </div>
         </div>
+        <button type="button" id="user_lien_aide" data-toggle="modal" class="btn btn-lg" data-target="#myModal"><i class="icon icon-sign-out icon-lg"></i> Aide</button>
         <div class="text-center">
             <img src="/static/img/plateau.png" class="user_img_plateau" alt="" />
         </div>
         <div class="container">
             <div class="row" style="margin:2em 0">
-                <div id="user_chat"class="col-md-6">
-                    <div class="user_chat_affichage">
-                        AFFICHAGE CHAT
-                    </div>
+                <div class="col-md-5">
+                    <h2>Chat</h2>
                     <ul id="user_messages"></ul>
-                    <form id="user_form" action="">
+                    <form  id="user_chat" id="user_form" action="">
                         <input id="m" autocomplete="off" />
                         <button type="button" name="button">Envoyer</button>
                     </form>
                 </div>
-                <div class="col-md-3">
-                    <div class="user_cartes">
-                        AFFICHAGE CARTE
-                    </div>
-                </div>
-                <div class="col-md-3">
+
+                    <div class="col-md-3">
+                        <h2>Question</h2>
+                            {% if nombre == 4 or nombre == 8 or nombre == 12 or nombre == 16 %}
+                            <div class="user_cartes_critique">
+                              <h3>
+                                DYSFONCTIONNEMENT
+                              </h3>
+                           {{carte_critique.description}}
+                          </div>
+                           {%else%}
+                           <div class="user_cartes_standard">
+                             <h3>
+                               DYSFONCTIONNEMENT
+                             </h3>
+                           {{carte_standard.description}}
+                           </div>
+                          {%endif%}
+                      </div>
+
+                <div class="col-md-4">
+                    <h2>Réponses</h2>
                     <form class="" action="index.html" method="post">
                         <div class="animateur_reponses">
                             <div class="animateur_affichage_reponse">
-                                AFFICHAGE REPONSE
+
                             </div>
                             <button class="animateur_btn_yes" type="button" name="button">Correct</button>
                             <button  class="animateur_btn_no" type="button" name="button">Incorrect</button>

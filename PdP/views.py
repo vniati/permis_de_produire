@@ -49,6 +49,12 @@ def user(request):
     carte_rattrapage = Rattrapage.objects.order_by('?').first()
     return render(request, "user.html", {"carte_standard":carte_standard, "carte_critique":carte_critique, "carte_rattrapage":carte_rattrapage, "nombre":nombre} )
 
+@login_required(login_url='/accounts/login/')
 
 def animateur(request):
-    return render(request, "animateur.html")
+    nombre = 1
+    carte_standard = DysStandard.objects.order_by('?').first()
+    carte_critique = DysCritique.objects.order_by('?').first()
+    carte_rattrapage = Rattrapage.objects.order_by('?').first()
+
+    return render(request, "user.html", {"carte_standard":carte_standard, "carte_critique":carte_critique, "carte_rattrapage":carte_rattrapage, "nombre":nombre} )
