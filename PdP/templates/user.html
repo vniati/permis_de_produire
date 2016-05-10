@@ -70,106 +70,98 @@
 
                     </div>
                     <div class="modal-footer">
-                       <button type="button" class="btn btn-inverse" data-dismiss="modal"><i class="icon icon-times icon-lg"></i>Fermer</button>
-                   </div>
-               </div>
-           </div>
-       </div>
-       <a href="#myModal" id="user_lien_aide" data-toggle="modal" data-target="#myModal">Aide<i class="icon icon-sign-out icon-lg"></i>
-       </a>
-   </div>
-   <div class="text-center">
-       <img src="/static/img/plateau.png" class="user_img_plateau" alt="" />
-   </div>
-   <div class="container">
-       <div class="row" style="margin:2em 0">
-           <!-- <<<<<<< HEAD
-           <div id="user_chat"class="col-md-6">
+                        <button type="button" class="btn btn-inverse" data-dismiss="modal"><i class="icon icon-times icon-lg"></i>Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#myModal" id="user_lien_aide" data-toggle="modal" data-target="#myModal">Aide<i class="icon icon-sign-out icon-lg"></i>
+        </a>
+    </div>
+    <div class="text-center">
+        <img src="/static/img/plateau.png" class="user_img_plateau" alt="" />
+    </div>
+    <div class="container">
+        <div class="row" style="margin:2em 0">
+            <!-- <<<<<<< HEAD
+            <div id="user_chat"class="col-md-6">
+            <div id="messages"></div>
+            <form id="form1" action="">
+            <input id="m" autocomplete="off" /><button>Send</button>
+            ======= -->
+            <div class="col-md-5">
+                <h2>Chat</h2>
 
-           <div id="messages"></div>
-           <form id="form1" action="">
-           <input id="m" autocomplete="off" /><button>Send</button>
-           ======= -->
-           <div class="col-md-5">
-               <h2>Chat</h2>
+                <ul id="zone_chat"></ul>
+                <form class="user_chat" id="formulaire_chat" method="post" action="">
+                    <input id="message" autocomplete="off" />
+                    <br></br>
+                    <button id ="envoi_message">Envoyer</button>
+                </form>
 
-               <ul id="zone_chat"></ul>
-               <form class="user_chat" id="formulaire_chat" method="post" action="">
-                   <input id="message" autocomplete="off" />
-                   <br></br>
-                   <button id ="envoi_message">Envoyer</button>
-               </form>
-
-           </div>
-           <div class="col-md-3">
-               <h2>Question</h2>
-               {% if nombre == 4 or nombre == 8 or nombre == 12 or nombre == 16 %}
-               <div class="user_cartes_critique">
-                   <h3>
-                       DYSFONCTIONNEMENT
-                   </h3>
-                   {{carte_critique.description}}
-               </div>
-               {%else%}
-               <div class="user_cartes_standard">
-                   <h3>
-                       DYSFONCTIONNEMENT
-                   </h3>
-                   {{carte_standard.description}}
-               </div>
-               {%endif%}
-           </div>
-           <div class="col-md-4">
-               <h2>Réponses</h2>
-               <div>
-                   <ul id="zone_chat_reponse"></ul>
-                   <form class="user_chat" id="formulaire_chat_reponse" method="post" action="">
-                       {% csrf_token %}
-                       <input id="message_reponse" autocomplete="off" />
-                       <br></br>
-                       <button id="envoi_reponse">Envoyer</button>
-                   </form>
-               </div>
-           </div>
-       </div>
-   </div>
+            </div>
+            <div class="col-md-3">
+                <h2>Question</h2>
+                {% if nombre == 4 or nombre == 8 or nombre == 12 or nombre == 16 %}
+                <div class="user_cartes_critique">
+                    <h3>
+                        DYSFONCTIONNEMENT
+                    </h3>
+                    {{carte_critique.description}}
+                </div>
+                {%else%}
+                <div class="user_cartes_standard">
+                    <h3>
+                        DYSFONCTIONNEMENT
+                    </h3>
+                    {{carte_standard.description}}
+                </div>
+                {%endif%}
+            </div>
+            <div class="col-md-4">
+                <h2>Réponses</h2>
+                <div>
+                    <ul id="zone_chat_reponse"></ul>
+                    <form class="user_chat" id="formulaire_chat_reponse" method="post" action="">
+                        {% csrf_token %}
+                        <input id="message_reponse" autocomplete="off" />
+                        <br></br>
+                        <button id="envoi_reponse">Envoyer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 </main>
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script src="http://localhost:8081/socket.io/socket.io.js"></script>
 <script>
-
 // Connexion à socket.io
 var socket = io.connect('http://localhost:8081');
-
 // On demande le pseudo, on l'envoie au serveur et on l'affiche dans le titre
 var pseudo = "{{request.user}}";
 socket.emit('nouveau_client', pseudo);
 document.title = pseudo + ' - ' + document.title;
-
 // Quand on reçoit un message, on l'insère dans la page
 socket.on('message', function(data) {
-   insereMessage(data.pseudo, data.message)
+    insereMessage(data.pseudo, data.message)
 })
-
 // Quand un nouveau client se connecte, on affiche l'information
 socket.on('nouveau_client', function(pseudo) {
-   $('#zone_chat').prepend('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>');
+    $('#zone_chat').prepend('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>');
 })
-
-[4:25]
 // Lorsqu'on envoie le formulaire, on transmet le message et on l'affiche sur la page
 $('#formulaire_chat').submit(function () {
-   var message = $('#message').val();
-   socket.emit('message', message); // Transmet le message aux autres
-   insereMessage(pseudo, message); // Affiche le message aussi sur notre page
-   $('#message').val('').focus(); // Vide la zone de Chat et remet le focus dessus
-   return false; // Permet de bloquer l'envoi "classique" du formulaire
+    var message = $('#message').val();
+    socket.emit('message', message); // Transmet le message aux autres
+    insereMessage(pseudo, message); // Affiche le message aussi sur notre page
+    $('#message').val('').focus(); // Vide la zone de Chat et remet le focus dessus
+    return false; // Permet de bloquer l'envoi "classique" du formulaire
 });
-
 // Ajoute un message dans la page
 function insereMessage(pseudo, message) {
-   $('#zone_chat').prepend('<p><strong>' + pseudo + '</strong> ' + message + '</p>');
+    $('#zone_chat').prepend('<p><strong>' + pseudo + '</strong> ' + message + '</p>');
 }
 </script>
 
@@ -177,37 +169,31 @@ function insereMessage(pseudo, message) {
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script src="http://localhost:8081/socket.io/socket.io.js"></script>
 <script>
-
 // Connexion à socket.io
 var socket_reponse = io.connect('http://localhost:8081');
-
 // On demande le pseudo, on l'envoie au serveur et on l'affiche dans le titre
 pseudo = "{{request.user}}";
 socket_reponse.emit('nouveau_client_reponse', pseudo);
 document.title = pseudo + ' - ' + document.title;
-
 // Quand on reçoit un message, on l'insère dans la page
 socket_reponse.on('message_reponse', function(data) {
-   insereMessageReponse(data.pseudo, data.message)
+    insereMessageReponse(data.pseudo, data.message)
 })
-
 // Quand un nouveau client se connecte, on affiche l'information
 // socket_reponse.on('nouveau_client_reponse', function(pseudo) {
 //     $('#zone_chat_reponse').prepend('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>');
 // })
-
 // Lorsqu'on envoie le formulaire, on transmet le message et on l'affiche sur la page
 $('#formulaire_chat_reponse').submit(function () {
-   var message = $('#message_reponse').val();
-   socket_reponse.emit('message_reponse', message); // Transmet le message aux autres
-   insereMessageReponse(pseudo, message); // Affiche le message aussi sur notre page
-   $('#message_reponse').val('').focus(); // Vide la zone de Chat et remet le focus dessus
-   return false; // Permet de bloquer l'envoi "classique" du formulaire
+    var message = $('#message_reponse').val();
+    socket_reponse.emit('message_reponse', message); // Transmet le message aux autres
+    insereMessageReponse(pseudo, message); // Affiche le message aussi sur notre page
+    $('#message_reponse').val('').focus(); // Vide la zone de Chat et remet le focus dessus
+    return false; // Permet de bloquer l'envoi "classique" du formulaire
 });
-
 // Ajoute un message dans la page
 function insereMessageReponse(pseudo, message) {
-   $('#zone_chat_reponse').prepend('<p><strong>' + pseudo + '</strong> ' + message + '</p>');
+    $('#zone_chat_reponse').prepend('<p><strong>' + pseudo + '</strong> ' + message + '</p>');
 }
 </script>
 {% endblock %}
