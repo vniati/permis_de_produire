@@ -32,7 +32,6 @@
             <div class="row" style="margin:2em 0">
 <!-- <<<<<<< HEAD
                 <div id="user_chat"class="col-md-6">
-
                     <div id="messages"></div>
                     <form id="form1" action="">
                         <input id="m" autocomplete="off" /><button>Send</button>
@@ -94,7 +93,6 @@
   socket.on('chat message', function(msg){
     $('#messages').append($('<p>').text(currentUser +': ' +msg));
   });
-
 </script>
 <script src="http://localhost:8100/socket.io/socket.io.js"></script>
 <script type="text/javascript">
