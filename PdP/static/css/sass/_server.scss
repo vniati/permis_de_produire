@@ -7,3 +7,26 @@ h1 {
 tbody td:not(.first):hover {
     background: #f1f1f1;
 }
+
+.divForm .color-btn {
+    button{
+        border: none;
+        padding: 2em;
+        border-radius: $radius;
+        :nth-child(1){
+            background-color: #98aa1f;
+        }
+        :nth-child(2){
+            background-color: #7A001E;
+        }
+        :nth-child(3){
+            background-color: #fff500;
+        }
+        :nth-child(4){
+            background-color: #00437a;
+        }
+    }
+}
+.btn1{
+    background-color: red;
+}
