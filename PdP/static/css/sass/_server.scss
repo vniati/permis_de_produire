@@ -13,20 +13,19 @@ tbody td:not(.first):hover {
         border: none;
         padding: 2em;
         border-radius: $radius;
-        :nth-child(1){
-            background-color: #98aa1f;
-        }
-        :nth-child(2){
-            background-color: #7A001E;
-        }
-        :nth-child(3){
-            background-color: #fff500;
-        }
-        :nth-child(4){
-            background-color: #00437a;
-        }
-    }
-}
+    }}
 .btn1{
-    background-color: red;
+    background-color: #7A001E;
+
+}
+.btn2{
+    background-color: #98aa1f;
+}
+.btn3{
+    background-color: #00437a;
+
+}
+.btn4{
+    background-color: #fff500;
+
 }

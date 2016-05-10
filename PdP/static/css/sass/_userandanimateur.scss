@@ -2,9 +2,14 @@
 *{
     padding: 0;
     margin: 0;
+    font-family: 'Fjalla One', sans-serif;
+}
+h2{
+    color:#B0C235;
+
 }
 #user_background{
-    margin-top: -4em;
+    margin-top: -5em;
 
 }
 #user_lien_aide{
@@ -29,14 +34,19 @@
     padding: 3px;
 
     bottom: 0;
+}
+#user_chat, .user_reponses{
+    border: $border;
+    padding: 1em;
+    border-radius: $radius;
     input{
-         border: $border;
-         border-radius: $radius;
-         padding: 10px;
-         width: 78%;
+        border: $border;
+        border-radius: $radius;
+        padding: 10px;
+        width: 100%;
     }
     button{
-        width: 21%;
+        width: 100%;
         background-color:#B0C235 ;
         border-radius: $radius;
         border: none;
@@ -56,11 +66,6 @@
     }
 }
 
-#user_chat{
-    border: $border;
-    padding: 1em;
-    border-radius: $radius;
-}
 .user_chat_affichage{
     border:$border;
     padding: 2em;
@@ -75,7 +80,6 @@
     text-align: center;
     background-image: radial-gradient(white,#B0C235);
     h3{
-        font-family: "Gadget";
         color: #33992D;
         font-size: large;
         margin-bottom: 20px;
@@ -88,38 +92,16 @@
     text-align: center;
     background-image: radial-gradient(white,#7A001E);
     h3{
-        font-family: "Gadget";
         color: #29040d;
         font-size: large;
         margin-bottom: 20px;
     }
 }
 
-.user_reponses{
-    border: $border;
-    padding: 1em;
-    border-radius: $radius;
-
-    button{
-        background-color:#B0C235 ;
-        border-radius: $radius;
-        border: none;
-        padding: 10px;
-        color: white;
-    }
-    input{
-        width: 164px;
-    }
-}
 .col-md-3{
-    padding-right: 0;
+    padding :0;
 }
-.user_affichage_reponse{
-    border: $border;
-    padding: 2em;
-    border-radius: $radius;
 
-}
 
 
 // animateur css
