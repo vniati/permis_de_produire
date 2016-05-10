@@ -1,4 +1,3 @@
-
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
@@ -30,11 +29,6 @@ io2.on('connection', function(socket){
   });
 });
 
-io2.on('connection', function(socket){
-  socket.on('secroom', function(msg){
-    io2.emit('secroom', msg);
-  });
-});
 
 
 // Second Chat

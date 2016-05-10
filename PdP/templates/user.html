@@ -32,7 +32,7 @@
             <div class="row" style="margin:2em 0">
                 <div id="user_chat"class="col-md-6">
 
-                    <ul id="messages"></ul>
+                    <div id="messages"></div>
                     <form id="form1" action="">
                         <input id="m" autocomplete="off" /><button>Send</button>
                     </form>
@@ -55,9 +55,10 @@
                        </div>
                       {%endif%}
                   </div>
+
                 <div class="col-md-3">
                         <div class="user_reponses">
-                          <ul id="messages2"></ul>
+                          <div id="messages2"></div>
                           <form id="form2" action="">
                               <input id="m2" autocomplete="off" /><button>Send</button>
                           </form>
@@ -71,13 +72,14 @@
 <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
 <script>
   var socket = io.connect('http://localhost:8100/');
+  currentUser = "{{request.user}}"
   $('#form1').submit(function(){
     socket.emit('chat message', $('#m').val());
-    $('#m').val('');
+        $('#m').val('');
     return false;
   });
   socket.on('chat message', function(msg){
-    $('#messages').append($('<li>').text(msg));
+    $('#messages').append($('<p>').text(currentUser +': ' +msg));
   });
 
 </script>
@@ -89,8 +91,9 @@ $('#form2').submit(function(){
   $('#m2').val('');
   return false;
 });
+currentUser = "{{request.user}}"
 socket2.on('chat message2', function(msg2){
-  $('#messages2').append($('<li>').text(msg2));
+  $('#messages2').append($('<p>').text(currentUser+': ' +msg2));
 });
 </script>
 {% endblock %}
