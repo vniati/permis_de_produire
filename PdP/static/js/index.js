@@ -1,53 +1,57 @@
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var app = require('express')(),
+server = require('http').createServer(app),
+io = require('socket.io').listen(server),
+ent = require('ent'), // Permet de bloquer les caractères HTML (sécurité équivalente à htmlentities en PHP)
+fs = require('fs');
 
-var io2 = require('socket.io')(http);
-var http2 = require('http').Server(app);
 
-var link = require("./function_link.js");
-
-link;
-
-io.on('connection', function(socket){
-  console.log('a user connected');
-  socket.on('disconnect', function(){
-    console.log('user disconnected');
-  });
+// Chargement de la page index.html
+app.get('/', function (req, res) {
+ res.sendfile(__dirname + '/user.html');
 });
 
-http.listen(8100, function(){
-  console.log('listening on :8100');
+io.sockets.on('connection', function (socket, pseudo) {
+   // Dès qu'on nous donne un pseudo, on le stocke en variable de session et on informe les autres personnes
+   socket.on('nouveau_client', function(pseudo) {
+       pseudo = ent.encode(pseudo);
+       socket.pseudo = pseudo;
+       socket.broadcast.emit('nouveau_client', pseudo);
+   });
+
+   // Dès qu'on reçoit un message, on récupère le pseudo de son auteur et on le transmet aux autres personnes
+   socket.on('message', function (message) {
+       message = ent.encode(message);
+       socket.broadcast.emit('message', {pseudo: socket.pseudo, message: message});
+       //socket.broadcast.emit('message', message);
+   });
 });
 
-io.emit('some event');
+server.listen(8081);
+/*
+var app_reponse = require('express')(),
+server_reponse = require('http').createServer(app_reponse),
+io_reponse = require('socket.io').listen(server_reponse),
+ent_reponse = require('ent'), // Permet de bloquer les caractères HTML (sécurité équivalente à htmlentities en PHP)
+fs_reponse = require('fs');
+/*
+// Chargement de la page index.html
+app_reponse.get('/', function (req, res) {
+ res.sendfile(__dirname + '/user.html');
+});*/
 
+io.sockets.on('connection', function (socket, pseudo) {
+   // Dès qu'on nous donne un pseudo, on le stocke en variable de session et on informe les autres personnes
+   socket.on('nouveau_client_reponse', function(pseudo) {
+       pseudo = ent.encode(pseudo);
+       socket.pseudo = pseudo;
+       socket.broadcast.emit('nouveau_client_reponse', pseudo);
+   });
 
-io2.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    io2.emit('chat message', msg);
-  });
+   // Dès qu'on reçoit un message, on récupère le pseudo de son auteur et on le transmet aux autres personnes
+   socket.on('message_reponse', function (message) {
+       message = ent.encode(message);
+       socket.broadcast.emit('message_reponse', {pseudo: socket.pseudo, message: message});
+   });
 });
 
-
-
-// Second Chat
-
-io2.on('connection', function(socket2){
-  console.log('a user connected');
-  socket2.on('disconnect', function(){
-    console.log('user disconnected');
-  });
-});
-
-http2.listen(8101, function(){
-  console.log('listening on :8101');
-});
-
-io2.emit('some event');
-
-io2.on('connection', function(socket2){
-  socket2.on('chat message2', function(msg2){
-    io2.emit('chat message2', msg2);
-  });
-});
+server.listen(8081);
