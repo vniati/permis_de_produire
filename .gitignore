@@ -6,3 +6,4 @@ PdP/*.pyc
 PdP/migrations/*.pyc
 PdP/static/node_modules
 PdP/static/js/function_link.js
+PdP/static/css/style.css.map
