@@ -84,12 +84,12 @@
     </div>
     <div class="container">
         <div class="row" style="margin:2em 0">
-            <!-- <<<<<<< HEAD
+            <!--
             <div id="user_chat"class="col-md-6">
             <div id="messages"></div>
             <form id="form1" action="">
             <input id="m" autocomplete="off" /><button>Send</button>
-            ======= -->
+            -->
             <div class="col-md-5">
                 <h2>Chat</h2>
 
@@ -162,7 +162,7 @@ $('#formulaire_chat').submit(function () {
 });
 // Ajoute un message dans la page
 function insereMessage(pseudo, message) {
-    $('#zone_chat').prepend('<p><strong>' + pseudo + '</strong> ' + message + '</p>');
+    $('#zone_chat').append('<li><strong>' + pseudo + '</strong> ' + message + '</li>');
 }
 </script>
 
@@ -194,7 +194,7 @@ $('#formulaire_chat_reponse').submit(function () {
 });
 // Ajoute un message dans la page
 function insereMessageReponse(pseudo, message) {
-    $('#zone_chat_reponse').prepend('<p><strong>' + pseudo + '</strong> ' + message + '</p>');
+    $('#zone_chat_reponse').append('<li><strong>' + pseudo + '</strong> ' + message + '</li>');
 }
 </script>
 {% endblock %}
